@@ -33,6 +33,10 @@
                 <img src="{{ asset('storage/' . Auth::user()->img) }}" alt="">
             </div>
 
+            <div class="col-md-8 text-end">
+                <a class="btn btn-primary" href="{{ route('products.index') }}">Guarda i tuoi prodotti</a>
+            </div>
+
             {{-- <div class="col-8-md text-end">
                 <form action="{{ route('profile.destroy') }}" method="POST">
 
