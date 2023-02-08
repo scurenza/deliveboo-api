@@ -52,6 +52,7 @@ class RegisteredUserController extends Controller
 
         // dd($form_data);
 
+
         $user = User::create([
             'name' => $request->name,
             'username' => $request->username,
@@ -62,10 +63,22 @@ class RegisteredUserController extends Controller
             'img' => $form_data['img']
         ]);
 
+        $user->types()->attach($request->types);
+
+
         event(new Registered($user));
 
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    // public function destroy(User $user)
+    // {
+    //     dd($user);
+    //     $user->types()->detach();
+
+    //     $user->delete();
+    //     return redirect()->route('test');
+    // }
 }
