@@ -34,10 +34,16 @@
                         </td>
                         <td>{{ $product->available === 1 ? 'disponibile' : 'non disponibile' }}</td>
                         <td>
-                            <div>
+                            <div class="d-flex">
                                 {{-- <button class="btn btn-success">Mostra</button> --}}
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Modifica</a>
-                                <button class="btn btn-danger">Cancella</button>
+                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary"><i
+                                        class="fa-solid fa-pen"></i></a>
+                                <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger ms-2"><i
+                                            class="fa-solid fa-trash"></i></button>
+                                </form>
                             </div>
                         </td>
                     </tr>

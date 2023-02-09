@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('user_id', Auth::user()->id)->get();
+        $products = Product::where('user_id', Auth::user()->id)->orderBy('name')->get();
         return view('products.index', compact('products'));
     }
 
@@ -101,10 +101,10 @@ class ProductController extends Controller
         $form_data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required'],
-            'price' => ['required', 'decimal:2', 'min:0'],
+            'price' => ['required', 'numeric', 'min:0'],
             'img' => ['nullable', 'image', 'max:512'],
         ]);
-        dd($form_data);
+
         if ($request->available === '1') {
             $form_data['available'] = 1;
         } else {
@@ -128,8 +128,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        if ($product->img) {
+            Storage::delete($product->img);
+        }
+        $product->delete();
+        return redirect()->route('products.index')->with('message', "$product->name è stato eliminato");
     }
 }
