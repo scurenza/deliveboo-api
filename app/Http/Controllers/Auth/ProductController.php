@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::where('user_id', Auth::user()->id)->get();
         return view('products.index', compact('products'));
     }
 
@@ -82,9 +82,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -94,9 +95,31 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+
+        $form_data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required'],
+            'price' => ['required', 'decimal:2', 'min:0'],
+            'img' => ['nullable', 'image', 'max:512'],
+        ]);
+        dd($form_data);
+        if ($request->available === '1') {
+            $form_data['available'] = 1;
+        } else {
+            $form_data['available'] = 0;
+        }
+
+        if ($request->hasFile('img')) {
+            if ($product->img) {
+                Storage::delete($product->img);
+            }
+            $path = Storage::put('img', $request->img);
+            $form_data['img'] = $path;
+        }
+        $product->update($form_data);
+        return redirect()->route('products.index')->with('message', "Hai modificato correttamente il prodotto $product->name");
     }
 
     /**

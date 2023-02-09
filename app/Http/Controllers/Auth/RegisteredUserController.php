@@ -40,10 +40,13 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'address' => ['required', 'string', 'max:255'],
-            'VAT' => ['required', 'string', 'max:15', 'unique:' . User::class],
+            'VAT' => ['required', 'numeric', 'max:99999999999', 'unique:' . User::class],
             'img' => ['nullable', 'image', 'max:512'],
             'types' => ['required', 'exists:types,id']
         ]);
+
+
+        $form_data['img'] = null;
 
         if ($request->hasFile('img')) {
             $path = Storage::put('img', $request->img);

@@ -4,3 +4,22 @@ import * as bootstrap from 'bootstrap';
 import.meta.glob([
     '../img/**'
 ])
+
+const btnForm = document.getElementById('button-submit');
+console.log(btnForm);
+const errorCheckbox = document.querySelector('.error-field');
+
+btnForm.addEventListener('click', ()=> {
+    event.preventDefault();
+    console.log(btnForm);
+    // const checkedBox = document.querySelectorAll('input[type="checkbox"]:checked');
+    // const checkArray = [...checkedBox];
+    // if (checkArray.length > 0) {
+    //     errorCheckbox.innerHTML = "";
+    //     btnForm.submit();
+    // } else {
+    //     errorCheckbox.innerHTML = `<span class="text-danger">Devi inserire tutti i campi obbligatori</span>`;
+    //     errorCheckbox.scrollIntoView();
+    // }
+});
+

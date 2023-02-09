@@ -4,6 +4,13 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <div class="error-field">
+                    @error('types')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
                 <div class="card">
                     <div class="card-header">{{ __('Register') }}</div>
 
@@ -13,7 +20,7 @@
 
                             <div class="mb-4 row">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome attività') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome attività*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -30,7 +37,7 @@
 
                             <div class="mb-4 row">
                                 <label for="username"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome utente') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome utente*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="username" type="text"
@@ -47,7 +54,7 @@
 
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -64,7 +71,7 @@
 
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Address*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -81,7 +88,7 @@
 
                             <div class="mb-4 row">
                                 <label for="VAT"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('VAT') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('VAT*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="VAT" type="text"
@@ -114,7 +121,7 @@
                             </div>
 
                             <div class="mb-4 row d-flex">
-                                <span class="col-md-4 col-form-label text-md-right">Seleziona una o più tipologie</span>
+                                <span class="col-md-4 col-form-label text-md-right">Seleziona una o più tipologie*</span>
                                 <div class="form-check @error('types') is-invalid @enderror">
                                     @foreach ($types as $type)
                                         <div>
@@ -127,18 +134,19 @@
                                             </label>
                                         </div>
                                     @endforeach
-                                    @error('types')
+                                    {{-- @error('types')
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                    @enderror --}}
+
                                 </div>
                             </div>
 
 
                             <div class="mb-4 row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -156,7 +164,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -164,9 +172,12 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-6 text-decoration-underline mb-4">
+                                <span>I campi con * sono obbligatori</span>
+                            </div>
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button id="button-submit" type="submit" class="btn btn-primary">
                                         {{ __('Register') }}
                                     </button>
                                 </div>

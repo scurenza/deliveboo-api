@@ -28,9 +28,18 @@
                         <th scope="row">{{ $product->name }}</th>
                         <td>{{ $product->description }}</td>
                         <td>{{ $product->price }}</td>
-                        <td>{{ $product->img }}</td>
+                        <td>
+                            <img class="w-50" src="{{ asset('storage/' . $product->img) }}"
+                                alt="{{ $product->img ? 'immagine di ' . $product->img : 'Immagine non disponibile' }}">
+                        </td>
                         <td>{{ $product->available === 1 ? 'disponibile' : 'non disponibile' }}</td>
-                        <td>Bottoni</td>
+                        <td>
+                            <div>
+                                {{-- <button class="btn btn-success">Mostra</button> --}}
+                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Modifica</a>
+                                <button class="btn btn-danger">Cancella</button>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
 

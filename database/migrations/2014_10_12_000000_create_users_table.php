@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('address');
-            $table->string('VAT', 15)->unique();
+            $table->string('VAT', 11)->unique();
             $table->text('img')->nullable();
             $table->rememberToken();
             $table->timestamps();
