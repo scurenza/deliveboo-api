@@ -6,20 +6,20 @@ import.meta.glob([
 ])
 
 const btnForm = document.getElementById('button-submit');
-console.log(btnForm);
+
 const errorCheckbox = document.querySelector('.error-field');
 
-btnForm.addEventListener('click', ()=> {
+btnForm.addEventListener('click', (event)=> {
     event.preventDefault();
-    console.log(btnForm);
-    // const checkedBox = document.querySelectorAll('input[type="checkbox"]:checked');
-    // const checkArray = [...checkedBox];
-    // if (checkArray.length > 0) {
-    //     errorCheckbox.innerHTML = "";
-    //     btnForm.submit();
-    // } else {
-    //     errorCheckbox.innerHTML = `<span class="text-danger">Devi inserire tutti i campi obbligatori</span>`;
-    //     errorCheckbox.scrollIntoView();
-    // }
+
+    const checkedBox = document.querySelectorAll('input[type="checkbox"]:checked');
+    const checkArray = [...checkedBox];
+    if (checkArray.length > 0) {
+        errorCheckbox.innerHTML = "";
+        document.getElementById('register-form').submit();
+    } else {
+        errorCheckbox.innerHTML = `<span class="text-danger">Devi inserire tutti i campi obbligatori</span>`;
+        errorCheckbox.scrollIntoView();
+    }
 });
 

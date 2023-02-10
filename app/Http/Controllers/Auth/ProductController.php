@@ -43,7 +43,7 @@ class ProductController extends Controller
         $form_data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required'],
-            'price' => ['required', 'decimal:2', 'min:0'],
+            'price' => ['required', 'numeric', 'min:0'],
             'img' => ['nullable', 'image', 'max:512'],
         ]);
         if ($request->available === '1') {

@@ -15,7 +15,8 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
+                        <form method="POST" id="register-form" enctype="multipart/form-data"
+                            action="{{ route('register') }}">
                             @csrf
 
                             <div class="mb-4 row">
@@ -54,7 +55,7 @@
 
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo E-mail*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -71,7 +72,7 @@
 
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Address*') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -164,7 +165,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password*') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"

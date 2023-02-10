@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             TypeTableSeeder::class,
-            ProductSeeder::class
-
+            ProductSeeder::class,
+            OrderSeeder::class
         ]);
     }
 }
