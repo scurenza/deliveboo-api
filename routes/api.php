@@ -19,4 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/users/{type_id}', [UserController::class, 'index']);
+Route::get('/userslist', [UserController::class, 'index']);
+
+Route::get('users', [UserController::class, 'show']);
