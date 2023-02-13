@@ -7,7 +7,29 @@
                 {{ session('message') }}
             </div>
         @endif
+        {{-- Modal --}}
+        <div class="modal" tabindex="-1" role="dialog" id="deleteModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sei sicuro?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            {{-- <span aria-hidden="true">&times;</span> --}}
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="deleteModalText"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="delete-modal-btn">Cancella</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
 
+        </div>
 
 
         <div class="row row-cols-md-3">
@@ -35,9 +57,10 @@
                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger ms-2"><i
-                                            class="fa-solid fa-trash"></i></button>
+                                    <button type="submit" class="btn btn-danger ms-2 ms-btn"
+                                        data-product-name="{{ $product->name }}">cancella</button>
                                 </form>
+
                             </div>
                         </div>
                     </div>
