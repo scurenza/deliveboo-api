@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
@@ -64,5 +65,35 @@ class UserController extends Controller
         //     'success' => true,
         //     'results' => $users
         // ]);
+    }
+
+    public function getTypes()
+    {
+        $types = Type::all();
+        return response()->json([
+            'success' => true,
+            'results' => $types
+        ]);
+    }
+
+    public function getSingleType($name)
+    {
+        $users = User::with('types')->whereHas('types', function ($query) use ($name) {
+            $query->where('name', $name);
+        })->get();
+
+        if ($users->count() === 0) {
+            return response()->json([
+                'success' => false,
+                'numberresults' => $users->count(),
+                'message' => 'Non ci sono risultati'
+            ]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'numberresults' => $users->count(),
+            'results' => $users
+        ]);
     }
 }

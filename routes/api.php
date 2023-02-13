@@ -22,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/userslist', [UserController::class, 'index']);
 
 Route::get('users', [UserController::class, 'show']);
+
+Route::get('/types', [UserController::class, 'getTypes']);
+
+Route::get('/types/{name}', [UserController::class, 'getSingleType']);
