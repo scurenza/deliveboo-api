@@ -56,13 +56,19 @@ class OrderController extends Controller
         $json = $request->all();
         // dd($json['products']);
 
+        $tot = 0;
+
+        foreach ($json['products'] as $product) {
+            $tot += $product['price'] * $product['quantity'];
+        }
+
         $form_data = [
-            "name" => "Pippo",
+            "name" => $json['name'],
             "last_name" => "Pluto",
-            "email" => "pippo@mail.it",
+            "email" => $json['email'],
             "phone_number" => 12345678,
             "address" => "Paperopoli",
-            "amount" => 124.50,
+            "amount" => $tot,
             "success" => 1,
             "date" => "2023-02-14"
         ];
