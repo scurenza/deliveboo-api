@@ -89,7 +89,7 @@
 
                             <div class="mb-4 row">
                                 <label for="VAT"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('VAT*') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('P. IVA*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="VAT" type="text"
@@ -106,7 +106,7 @@
 
                             <div class="mb-4 row">
                                 <label for="img"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Img') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Immagine') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="img" type="file"
@@ -179,7 +179,7 @@
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button id="button-submit" type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                        {{ __('Registrati') }}
                                     </button>
                                 </div>
                             </div>

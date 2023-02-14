@@ -96,4 +96,14 @@ class UserController extends Controller
             'results' => $users
         ]);
     }
+
+    public function getRestaurant($id)
+    {
+        $user = User::with('products')->where('id', $id)->first();
+
+        return response()->json([
+            'success' => true,
+            'results' => $user
+        ]);
+    }
 }

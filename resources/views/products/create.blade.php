@@ -23,7 +23,7 @@
                 <input type="file" name="img" class="form-control" id="img" aria-describedby="img">
             </div>
             <div class="mb-3 form-check">
-                <label for="available" class="form-label">Disponibile</label>
+                <label for="available" class="form-label">Disponibilità</label>
                 <input type="checkbox" checked value="1" name="available" class="form-check-input" id="available">
             </div>
             <div class="mb-3">

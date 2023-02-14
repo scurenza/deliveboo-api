@@ -26,7 +26,6 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -37,23 +36,55 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $form_data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required', 'numeric', 'max:13'],
-            'address' => ['required', 'string', 'max:255']
-        ]);
+        // $form_data = $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'last_name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'max:255'],
+        //     'phone_number' => ['required', 'numeric', 'max:13'],
+        //     'address' => ['required', 'string', 'max:255']
+        // ]);
 
-        if ($request->success === '1') {
-            $form_data['success'] = 1;
-        } else {
-            $form_data['success'] = 0;
+        // if ($request->success === '1') {
+        //     $form_data['success'] = 1;
+        // } else {
+        //     $form_data['success'] = 0;
+        // }
+
+        // $new_order = new Order();
+        // $new_order->fill($form_data);
+        // $new_order->save();
+        $json = $request->all();
+        // dd($json['products']);
+
+        $form_data = [
+            "name" => "Pippo",
+            "last_name" => "Pluto",
+            "email" => "pippo@mail.it",
+            "phone_number" => 12345678,
+            "address" => "Paperopoli",
+            "amount" => 124.50,
+            "success" => 1,
+            "date" => "2023-02-14"
+        ];
+
+        $order = Order::create($form_data);
+        $products = $json['products'];
+
+
+
+        foreach ($products as $product) {
+            // $finalList[] = [
+            //     $product['id'] => ['quantity' => $product['quantity']]
+            // ];
+
+            $order->products()->attach($product['id'], ['quantity' => $product['quantity']]);
         }
 
-        $new_order = new Order();
-        $new_order->fill($form_data);
-        $new_order->save();
+
+        return response()->json([
+            'success' => true,
+            'results' => 'ordine inserito'
+        ]);
     }
 
 
