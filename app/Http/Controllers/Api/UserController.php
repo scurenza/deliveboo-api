@@ -20,41 +20,51 @@ class UserController extends Controller
         //     'success' => true,
         //     'results' => $users
         // ]);
-        $restaurants = User::all();
+        $restaurants = User::with('types')->get();
         return response()->json([
             'success' => true,
             'results' => $restaurants
         ]);
     }
 
-    public function show(Request $request)
+    public function show($name)
     {
-        $query = $request->query('type');
-        $array = explode(",", $query);
+        $users = User::with('types')->whereHas('types', function ($query) use ($name) {
+            $query->where('name', $name);
+        })->get();
 
-        $users = [];
-        $arrayResult = [];
-        foreach ($array as $type) {
 
-            $users[] = User::with('types', 'products')->whereHas('types', function ($q) use ($type) {
-                $q->where('name', $type);
-            })->get();
-        }
-        foreach ($users as $user) {
-            foreach ($user as $restaurant) {
-                if (!in_array($restaurant, $arrayResult)) {
-                    $arrayResult[] = $restaurant;
-                }
-            }
-        }
         return response()->json([
             'success' => true,
-            'results' => $arrayResult
+            'results' => $users
         ]);
 
+        // $query = $request->query('type');
+        // $array = explode(",", $query);
+
+        // $users = [];
+        // $arrayResult = [];
+        // foreach ($array as $type) {
+
+        //     $users[] = User::with('types', 'products')->whereHas('types', function ($q) use ($type) {
+        //         $q->where('name', $type);
+        //     })->get();
+        // }
+        // foreach ($users as $user) {
+        //     foreach ($user as $restaurant) {
+        //         if (!in_array($restaurant, $arrayResult)) {
+        //             $arrayResult[] = $restaurant;
+        //         }
+        //     }
+        // }
+        // return response()->json([
+        //     'success' => true,
+        //     'results' => $arrayResult
+        // ]);
+
+        //----------------------------------------   
 
         // QUERY PER CHIAMATA API
-
         // $users = User::with('types')->whereHas('types', function ($query) use ($array) {
         //     foreach ($array as $name) {
         //         $query->where('name', $name);
@@ -104,6 +114,24 @@ class UserController extends Controller
         return response()->json([
             'success' => true,
             'results' => $user
+        ]);
+    }
+
+    public function multifilter(Request $request)
+    {
+        $query = $request->query('type');
+        $category_name = explode(",", $query);
+        $rest_list_match = [];
+        $users = User::with('types')->get();
+        foreach ($users as $user) {
+            if ($user->types()->whereIn('name', $category_name)->count() == count($category_name)) {
+                $rest_list_match[] = $user;
+            }
+        }
+        return response()->json([
+            'success' => true,
+            'results' => $rest_list_match,
+            'number_results' => count($rest_list_match)
         ]);
     }
 }

@@ -31,3 +31,5 @@ Route::get('/types/{name}', [UserController::class, 'getSingleType']);
 Route::get('/user/{id}', [UserController::class, 'getRestaurant']);
 
 Route::post('/order', [OrderController::class, 'store']);
+
+Route::get('/filtercategories', [UserController::class, 'multifilter']);
