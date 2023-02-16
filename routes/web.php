@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\ProductController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BraintreeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class);
 });
 
+Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
 
 // Route::get('/test', function () {
 //     return view('test');
