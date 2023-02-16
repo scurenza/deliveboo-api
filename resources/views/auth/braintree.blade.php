@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 @section('content')
     <div class="py-12">
         @csrf
@@ -20,4 +20,4 @@
             });
         </script>
     </div>
-@endsection
+@endsection --}}

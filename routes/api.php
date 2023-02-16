@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\OrderController as ApiOrderController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Auth\OrderController;
 use Illuminate\Http\Request;
@@ -33,3 +34,7 @@ Route::get('/user/{id}', [UserController::class, 'getRestaurant']);
 Route::post('/order', [OrderController::class, 'store']);
 
 Route::get('/filtercategories', [UserController::class, 'multifilter']);
+
+Route::get('/orders/generate', [ApiOrderController::class, 'generate']);
+
+Route::post('/orders/make/payment', [ApiOrderController::class, 'makepayment']);

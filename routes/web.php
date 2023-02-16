@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class);
 });
 
-Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
+// Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
 
 // Route::get('/test', function () {
 //     return view('test');
