@@ -41,7 +41,7 @@
             <div class="mb-3">
                 <span class="text-decoration-underline">I campi con * sono obbligatori</span>
             </div>
-            <button type="submit" class="btn btn-primary">Salva</button>
+            <button type="submit" class="btn btn-primary">Salva Modifiche</button>
         </form>
     </div>
 @endsection
