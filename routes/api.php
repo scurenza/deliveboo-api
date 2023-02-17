@@ -38,3 +38,5 @@ Route::get('/filtercategories', [UserController::class, 'multifilter']);
 Route::get('/orders/generate', [ApiOrderController::class, 'generate']);
 
 Route::post('/orders/make/payment', [ApiOrderController::class, 'makepayment']);
+
+Route::get('/getAllOrders', [OrderController::class, 'index']);

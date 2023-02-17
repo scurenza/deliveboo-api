@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -16,7 +17,24 @@ class OrderController extends Controller
     public function index()
     {
         // $orders = Order::where('product_id');
+        // $orders::with('products')->whereHas('products', function ($query) {
+        //     $query->where('user_id', 1);
+        // })->get();
 
+        // $orders = Order::with('products')->whereHas('products', function ($query) {
+        //     $query->where('user_id', Auth::user()->id);
+        // })->get();
+
+        $orders = Order::with('products')->whereHas('products', function ($query) {
+            $query->where('user_id', Auth::user()->id);
+        })->orderBy('date', 'desc')->get();
+
+        // return response()->json([
+        //     'results' => $orders[0]
+        // ]);
+
+
+        return view('orders.index', compact('orders'));
     }
 
     /**

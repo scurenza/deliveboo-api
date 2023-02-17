@@ -24,7 +24,7 @@ class OrderController extends Controller
     {
         $result = $gateway->transaction()->sale([
             'amount' => $request->amount,
-            'paymentMethodNonce' => $request->token,
+            'paymentMethodNonce' => $request->nonce,
             'options' => [
                 'submitForSettlement' => true
             ]

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\OrderController;
 use App\Http\Controllers\Auth\ProductController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BraintreeController;
@@ -31,7 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Route::delete('/profile', [RegisteredUserController::class, 'destroy'])->name('profile.destroy');
     Route::resource('products', ProductController::class);
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 });
+
 
 // Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
 
