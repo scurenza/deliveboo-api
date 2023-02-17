@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function generate(OrderRequest $request, Gateway $gateway)
+    public function generate(Gateway $gateway)
     {
         $token = $gateway->clientToken()->generate();
 
@@ -23,7 +23,7 @@ class OrderController extends Controller
     public function makePayment(Request $request, Gateway $gateway)
     {
         $result = $gateway->transaction()->sale([
-            'amount' => '12.00',
+            'amount' => $request->amount,
             'paymentMethodNonce' => $request->token,
             'options' => [
                 'submitForSettlement' => true
