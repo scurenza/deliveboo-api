@@ -110,6 +110,13 @@
                                     Prodotti
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() === 'orders.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('orders.index') }}">
+                                    <i class="fa-solid fa-inbox"></i>
+                                    Ordini ricevuti
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

@@ -20,7 +20,7 @@ class UserController extends Controller
         //     'success' => true,
         //     'results' => $users
         // ]);
-        $restaurants = User::with('types')->get();
+        $restaurants = User::with('types')->paginate(3);
         return response()->json([
             'success' => true,
             'results' => $restaurants

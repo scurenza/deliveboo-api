@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -71,11 +73,39 @@ class OrderController extends Controller
 
         foreach ($products as $product) {
             $finalList[] = [
-                $product['id'] => ['quantity' => $product['quantity']]
+                $product['id'] => ['quantity' => $product['quantity'], 'user_id' => $product['user_id']]
             ];
+
 
             $order->products()->attach($product['id'], ['quantity' => $product['quantity']]);
         }
+
+        $id_user = $products[0]['user_id'];
+        $user = User::find($id_user);
+
+
+
+        $email = $form_data['email'];
+        $messageData = [
+            "name" => $form_data['name'],
+            "last_name" => $form_data['last_name'],
+            "amount" => $form_data['amount'],
+            "email" => $form_data['email'],
+            "phone_number" => $form_data['phone_number'],
+            "address" => $form_data['address'],
+            "user_name" => $user->name
+        ];
+
+        // Mail pagante
+        Mail::send('emails.order', $messageData, function ($message) use ($email) {
+            $message->to($email)->subject('Il tuo ordine è stato effetuato');
+        });
+
+        $email_sender = $user->email;
+        // Mail esercente
+        Mail::send('emails.order-user', $messageData, function ($message) use ($email_sender) {
+            $message->to($email_sender)->subject('Hai ricevuto un nuovo ordine');
+        });
 
         return response()->json([
             'success' => true,
