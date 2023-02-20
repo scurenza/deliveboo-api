@@ -123,6 +123,7 @@ class UserController extends Controller
         $category_name = explode(",", $query);
         $rest_list_match = [];
         $page = $request->query("page");
+        $page = (int)$page;
         $users = User::with('types')->get();
         foreach ($users as $user) {
             if ($user->types()->whereIn('name', $category_name)->count() == count($category_name)) {
@@ -130,19 +131,26 @@ class UserController extends Controller
             }
         }
         $skip_number = ($page - 1) * 3;
-        $results = [];
+        $resultsRest = [];
         for ($i = 0; $i < 3; $i++) {
-            if (count($rest_list_match) > $i) {
-                $results[$i] = $rest_list_match[$skip_number + $i];
+            if (count($rest_list_match) > $skip_number + $i) {
+                $resultsRest[$i] = $rest_list_match[$skip_number + $i];
             }
         }
 
+        $last_page = null;
+
+        if (count($rest_list_match) >= $skip_number * 2) {
+            $last_page = round(count($rest_list_match) / 3) + 1;
+        }
         return response()->json([
             'success' => true,
-            'results' => $results,
-            'total_results' => count($rest_list_match),
-            'current_page' => $page,
-            'last_page' => round(count($rest_list_match) / 3)
+            'results' => [
+                'current_page' => $page,
+                'last_page' => $last_page,
+                'total' => count($rest_list_match),
+                'data' => $resultsRest
+            ]
         ]);
     }
 }
