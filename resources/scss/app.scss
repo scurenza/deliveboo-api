@@ -18,16 +18,25 @@ body{
 .text-my-secondary{
     color: var(--secondary);
 }
+.title-sections{
+    color: var(--secondary);
+    font-weight: 800;
+    font-size: 2rem;
+    padding-bottom: 2rem;
+}
+.ms_logo{
+    color: var(--primary);
+    text-align: center;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
 // /COMMON
-
 
 // HOME
 .banner-home{
     background-color: var(--primary);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 4rem 4rem;
+    padding: 2rem 4rem;
+    .d-flex{
     .banner-img-wrapper{
         max-width: 350px;
         img{
@@ -50,8 +59,10 @@ body{
             }
         }
     }
+}   
 }
 // /HOME
+
 // CARDS
 .ms_cards-wrapper{
     padding: 2rem 4rem;
@@ -108,6 +119,12 @@ body{
             margin-right: 1rem;
         }
     }
+// LOGOUT
+.ms_logout{
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+}
 }
 // /SIDEBAR
 
