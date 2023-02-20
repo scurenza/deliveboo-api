@@ -98,12 +98,15 @@
     @else
         {{-- view utente non registrato --}}
         <div class="text-center home-guest">
-            <h1>Deliveboo</h1>
-            <div>
-                <a class="btn" href="{{ route('login') }}">{{ __('Accedi') }}</a>
-            </div>
-            <div>
-                <a class="btn" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+            <div class="home-guest-container">
+                <h1>Deliveboo</h1>
+                <h3>Vuoi collaborare con noi? <br> Accedi o registrati come ristoratore alla piattaforma</h3>
+                <div>
+                    <a class="btn" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                </div>
+                <div>
+                    <a class="btn" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                </div>
             </div>
         </div>
     @endif

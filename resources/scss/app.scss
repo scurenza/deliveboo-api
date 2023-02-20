@@ -68,8 +68,8 @@ body{
     padding: 2rem 4rem;
 }
 .ms_card {
-    width: 190px;
-    height: 274px;
+    margin-bottom: 1rem;
+    height: 350px;
     background: rgb(255, 255, 255);
     padding: .4em;
     border-radius: 6px;
@@ -93,7 +93,7 @@ body{
   .ms_price {
     text-align: center;
     color: var(--dark-grey);
-    font-size: 0.7em;
+    font-size: 1em;
     font-weight: 600;
     padding: 10px 7px 0;
   }
@@ -130,14 +130,109 @@ body{
 
 // HOME GUEST
 .home-guest{
-    a{
-        background-color: #14213D;
-        color: white;
-        margin-bottom: 1rem;
-        &:hover{
-            background-color: #FCA311;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .home-guest-container{
+        h1{
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        h3{
+            font-size: 1.2rem;
+            font-weight: 400px;
+            padding-bottom: 1rem;
+            color: var(--grey);
+        }
+        a{
+            background-color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
             color: #14213D;
+            &:hover{
+                background-color: var(--grey);
+            }
         }
     }
 }
 // /HOME GUEST
+
+// PRODOCTS
+.add-new-btn.card{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    font-weight: 200;
+    color: var(--primary);
+    border: 6px solid var(--primary);
+    cursor: pointer;
+    text-decoration: none;
+    .add-card-hover{
+        font-size: 1.3rem;
+        color: white;  
+    }
+    &:hover{
+        color: var(--primary);
+        .add-card-hover{  
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+    }
+}
+.card{
+    height: 100%;
+    border: 1px solid white;
+    
+    .card-img-top{
+        height: 50%;
+        width: 100%;
+        img{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .card-body{
+        .card-title{
+            font-size: 1.6rem;
+            font-weight: 600;  
+            padding-bottom: 1rem; 
+        }
+        .list-group-item{
+            display: flex;
+            justify-content: space-between;
+            span{
+                color: var(--primary);
+            }
+            span.prod-info{
+                color: var(--secondary);
+                font-weight: 600;
+            }
+        }
+        .card-edit-btn{
+            background-color: var(--primary);
+            color: white;
+            width: 80px;
+            text-align: center;
+            &:hover{
+                background-color: var(--secondary);
+            }
+        }
+        .card-delete-btn{
+            background-color: rgb(234, 56, 56);
+            color: white;
+            width: 80px;
+            text-align: center;
+            &:hover{
+                background-color: var(--secondary);
+            }
+        }
+    }
+}
+//PRODOCTS
