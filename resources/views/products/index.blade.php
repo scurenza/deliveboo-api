@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container p-4">
         @if (session('message'))
             <div class="alert alert-success">
                 {{ session('message') }}
@@ -27,10 +27,6 @@
                 </div>
             </div>
         </div>
-        <div>
-
-        </div>
-
 
         <div class="row row-cols-md-3">
             @foreach ($products as $product)

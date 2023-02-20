@@ -90,31 +90,32 @@
                 </div>
             </div>
         </nav>
+        {{-- main --}}
         <div class="{{ Auth::user() ? 'd-flex' : '' }}" style="min-height:90vh">
             {{-- Sidebar --}}
             @if (Auth::user())
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar">
+                <nav id="sidebarMenu" class="col-sm-4 col-md-3 col-lg-2 d-md-block navbar-dark sidebar">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() === 'dashboard' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('dashboard') }}">
+                                <a class="nav-link sidebar-name {{ Route::currentRouteName() === 'home' ? 'bg-secondary' : '' }}"
+                                    href="{{ url('/') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
-                                    Dashboard
+                                    Home
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() === 'products.index' ? 'bg-secondary' : '' }}"
+                                <a class="nav-link sidebar-name {{ Route::currentRouteName() === 'products.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('products.index') }}">
                                     <i class="fa-solid fa-list"></i>
                                     Prodotti
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() === 'orders.index' ? 'bg-secondary' : '' }}"
+                                <a class="nav-link sidebar-name {{ Route::currentRouteName() === 'orders.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('orders.index') }}">
                                     <i class="fa-solid fa-inbox"></i>
-                                    Ordini ricevuti
+                                    Ordini
                                 </a>
                             </li>
                         </ul>
@@ -127,7 +128,7 @@
                 @yield('content')
             </main>
         </div>
-
+        {{-- main --}}
     </div>
 </body>
 

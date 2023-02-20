@@ -1,10 +1,11 @@
 @php
-    
-    $productsList = Auth::user()->products;
-    $productsAvailable = [];
-    foreach ($productsList as $product) {
-        if ($product->available == 1) {
-            $productsAvailable[] = $product;
+    if (Auth::User()) {
+        $productsList = Auth::user()->products;
+        $productsAvailable = [];
+        foreach ($productsList as $product) {
+            if ($product->available == 1) {
+                $productsAvailable[] = $product;
+            }
         }
     }
     // dd($productsAviable)
@@ -78,18 +79,24 @@
                                     </div>
                                 </div>
                             </div>
+                        @endforeach
                     </div>
-                @endforeach
-            @else
-                <h1 class="text-center">Non ci sono prodotti disponibili</h1>
-    @endif
-    </div>
-
-
-
-    {{-- /prodotti disponibili --}}
-    </div>
-@else
-    {{-- view utente non registrato --}}
+                @else
+                    <h1 class="text-center">Non ci sono prodotti disponibili</h1>
+                @endif
+            </div>
+        </div>
+        {{-- /prodotti disponibili --}}
+    @else
+        {{-- view utente non registrato --}}
+        <div class="text-center home-guest">
+            <h1>Deliveboo</h1>
+            <div>
+                <a class="btn" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+            </div>
+            <div>
+                <a class="btn" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+            </div>
+        </div>
     @endif
 @endsection
