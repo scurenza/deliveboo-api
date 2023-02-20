@@ -122,16 +122,27 @@ class UserController extends Controller
         $query = $request->query('type');
         $category_name = explode(",", $query);
         $rest_list_match = [];
+        $page = $request->query("page");
         $users = User::with('types')->get();
         foreach ($users as $user) {
             if ($user->types()->whereIn('name', $category_name)->count() == count($category_name)) {
                 $rest_list_match[] = $user;
             }
         }
+        $skip_number = ($page - 1) * 3;
+        $results = [];
+        for ($i = 0; $i < 3; $i++) {
+            if (count($rest_list_match) > $i) {
+                $results[$i] = $rest_list_match[$skip_number + $i];
+            }
+        }
+
         return response()->json([
             'success' => true,
-            'results' => $rest_list_match,
-            'number_results' => count($rest_list_match)
+            'results' => $results,
+            'total_results' => count($rest_list_match),
+            'current_page' => $page,
+            'last_page' => round(count($rest_list_match) / 3)
         ]);
     }
 }

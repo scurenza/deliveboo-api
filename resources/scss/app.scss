@@ -1,1 +1,88 @@
 @import '~bootstrap/scss/bootstrap';
+
+:root{
+    --primary: #FCA311;
+    --secondary: #14213D;
+    // white
+    --grey: #E5E5E5;
+    --dark-grey: #808080;
+}
+body{
+    background-color: var(--grey);
+}
+// HOME
+.banner-home{
+    background-color: var(--primary);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 4rem 4rem;
+    .banner-img-wrapper{
+        width: 50%;
+        img{
+            width: 100%;
+            border-radius: 30px;
+        }
+    }
+    ul{
+        border-radius: 20px;
+        li{
+            padding: 0.75rem 1rem;
+            span{
+
+                &:first-child{
+                    margin-right: 2rem;
+                }
+                &:nth-child(2){
+                    color: #FCA311;
+                }
+            }
+        }
+    }
+}
+// /HOME
+// CARDS
+.ms_cards-wrapper{
+    padding: 2rem 4rem;
+}
+.ms_card {
+    width: 190px;
+    height: 274px;
+    background: rgb(255, 255, 255);
+    padding: .4em;
+    border-radius: 6px;
+  
+    // img
+  .ms_card-image {
+    background-color: rgb(236, 236, 236);
+    width: 100%;
+    height: 60%;
+    border-radius: 6px 6px 0 0;
+    &:hover{
+        transform: scale(0.98);
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+  }
+//   prezzo
+  .ms_price {
+    text-align: center;
+    color: var(--dark-grey);
+    font-size: 0.7em;
+    font-weight: 600;
+    padding: 10px 7px 0;
+  }
+//   nome prodotto
+  .ms_heading {
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--secondary);
+    padding: 7px;
+  }
+}
+// /CARDS
+
