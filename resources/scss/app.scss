@@ -44,6 +44,15 @@ h2{
     margin-top: 1rem; 
     padding: 0.7rem 0;
 }
+
+.hover-btn-secondary{
+    transition: all 1s;
+    &:hover{
+    color: var(--primary);
+    background-color: var(--secondary);
+    transform: scale(1.8);
+}
+}
 // /COMMON
 
 // HOME

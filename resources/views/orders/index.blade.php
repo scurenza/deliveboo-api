@@ -3,14 +3,11 @@
 
 @section('content')
     <div class="container overflow-scroll" style="height: 100vh">
-
-
-
         @if (count($orders) > 0)
             {{-- if order --}}
             <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
                 @foreach ($orders as $order)
-                    <div class="col">
+                    <div class="col pt-3">
 
                         {{-- card --}}
                         <div class="card bg-my-secondary d-flex flex-column justify-content-center" style="height:100%">

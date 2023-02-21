@@ -72,10 +72,11 @@
             </div>
             {{-- /banner-home --}}
 
-            {{-- prodotti disponibili --}}
-            <h2 class="text-center title-sections">I tuoi piatti visibili ai clienti</h2>
-            <div class="ms_cards-wrapper">
-                @if (count($productsAvailable) > 0)
+
+            @if (count($productsAvailable) > 0)
+                {{-- prodotti disponibili --}}
+                <h2 class="text-center title-sections">I tuoi piatti visibili ai clienti</h2>
+                <div class="ms_cards-wrapper">
                     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
                         @foreach ($productsAvailable as $product)
                             <div class="col">
@@ -106,10 +107,10 @@
                             </div>
                         @endforeach
                     </div>
-                @else
-                    <h1 class="text-center">Non ci sono prodotti disponibili</h1>
-                @endif
-            </div>
+                </div>
+            @else
+                <h2 class="text-center" style="padding-top: 4rem;">Non ci sono prodotti visibili ai clienti</h1>
+            @endif
         </div>
         {{-- /prodotti disponibili --}}
     @else
