@@ -3,73 +3,69 @@
 
 @section('content')
     <div class="container overflow-scroll" style="height: 100vh">
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
-            @foreach ($orders as $order)
-                <div class="col">
-
-                    {{-- card --}}
-                    <div class="card d-flex flex-column justify-content-center" style="height:100%">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Ordinante: {{ $order->name }} {{ $order->last_name }}</h5>
-
-                            <ul class="list-group ">
-                                <li class="list-group-item">ID ordine: {{ $order->id }}</li>
-                                <li class="list-group-item">numero di telefono: {{ $order->phone_number }}</li>
-                                <li class="list-group-item">Indirizzo: {{ $order->address }}</li>
-                                <li class="list-group-item">Totale: {{ $order->amount }}€</li>
-                                {{-- <li class="list-group-item">Prezzo: {{ $product->price }} €</li>
-                                <li class="list-group-item">Disponibilità:
-                                    {{ $product->available === 1 ? 'disponibile' : 'non disponibile' }}</li> --}}
-                            </ul>
-
-                            <ul>
-                                @foreach ($order->products as $product)
-                                    <li class="list-group-item">nome prodotto: {{ $product->name }}, {{ $product->price }}€,
-                                        x{{ $product->pivot->quantity }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    {{-- card --}}
-
-                </div>
-            @endforeach
-        </div>
 
 
-        <div class="my-3 text-end">
-            {{-- <a class="btn btn-primary" href="{{ route('') }}">Vai a guardare le statistiche</a> --}}
-        </div>
 
+        @if (count($orders) > 0)
+            {{-- if order --}}
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+                @foreach ($orders as $order)
+                    <div class="col">
 
-        <!-- Modal della conferma prima della cancellazione -->
-        {{-- <div class="modal fade" id="delete-project-{{ $project->id }}" tabindex="-1"
-                                        aria-labelledby="delete-label-{{ $project->id }}" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h3 class="modal-title fs-5" id="delete-label-{{ $project->id }}">Vuoi
-                                                        cancellare {{ $project->title }}?</h3>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Annulla</button>
-                                                    <form action="{{ route('admin.projects.destroy', $project->slug) }}"
-                                                        method="POST" class="d-inline-block">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-danger" type="submit">
-                                                            Cancella
-                                                        </button>
-                                                    </form>
-                                                </div>
+                        {{-- card --}}
+                        <div class="card bg-my-secondary d-flex flex-column justify-content-center" style="height:100%">
+                            <div class="card-body">
+                                <h5 class="card-title text-center text-my-primary">Ordine: #{{ $order->id }}</h5>
+
+                                <ul class="list-group ">
+                                    <li class="list-group-item">
+                                        <span>Cliente:</span>
+                                        <div>{{ $order->name }} {{ $order->last_name }}</div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>Cellulare:</span>
+                                        <div>{{ $order->phone_number }}</div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>Indirizzo:</span>
+                                        <div>{{ $order->address }}</div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>Totale:</span>
+                                        <div>{{ $order->amount }}€</div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>Data:</span>
+                                        <div>{{ date('d-m-y', strtotime($order->date)) }}</div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span>Ora:</span>
+                                        <div>{{ date('H:i', strtotime($order->date)) }}</div>
+                                    </li>
+                                </ul>
+                                <ul class="list-group pt-1">
+                                    @foreach ($order->products as $product)
+                                        <li class="list-group-item">
+                                            <span>Prodotto:</span>
+                                            <div>
+                                                {{ $product->name }} x
+                                                {{ $product->pivot->quantity }}
                                             </div>
-                                        </div>
-                                    </div> --}}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        {{-- card --}}
 
-
-
+                    </div>
+                @endforeach
+            </div>
+            {{-- if order --}}
+        @else
+            <div class="d-flex justify-content-center align-items-center w-100" style="height: 100%;">
+                <h1 class="text-my-primary">Non hai ricevuto alcun ordine</h1>
+            </div>
+        @endif
     </div>
 @endsection
