@@ -3,16 +3,14 @@
 
 @section('content')
     <div class="container overflow-scroll" style="height: 100vh">
-        <div class="row row-cols-md-3">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
             @foreach ($orders as $order)
                 <div class="col">
 
-
-                    <div class="card d-flex flex-column justify-content-center" style="width: 18rem; height:100%">
+                    {{-- card --}}
+                    <div class="card d-flex flex-column justify-content-center" style="height:100%">
                         <div class="card-body">
                             <h5 class="card-title text-center">Ordinante: {{ $order->name }} {{ $order->last_name }}</h5>
-
-
 
                             <ul class="list-group ">
                                 <li class="list-group-item">ID ordine: {{ $order->id }}</li>
@@ -30,10 +28,10 @@
                                         x{{ $product->pivot->quantity }}</li>
                                 @endforeach
                             </ul>
-
-
                         </div>
                     </div>
+                    {{-- card --}}
+
                 </div>
             @endforeach
         </div>

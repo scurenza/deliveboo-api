@@ -34,8 +34,10 @@
             {{-- Sidebar --}}
             @if (Auth::user())
                 <nav id="sidebarMenu" class="col-sm-4 col-md-3 col-lg-2 d-md-block navbar-dark sidebar">
-                    <h1 class="ms_logo"><img style="width: 40px;" src="/img/Logo.png" alt=""> <span
-                            class="side-to-hide">eliveboo</span></h1>
+                    <h1 class="ms_logo">
+                        <img style="width: 40px;" src="/img/Logo.png" alt="">
+                        <span class="side-to-hide" style="margin-left: -2px;">eliveboo</span>
+                    </h1>
 
                     <div>
                         <ul class="nav flex-column">

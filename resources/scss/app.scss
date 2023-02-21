@@ -26,12 +26,20 @@ body{
 }
 .ms_logo{
     color: var(--primary);
-    text-align: center;
+    padding-left: 1.2rem;
+    font-size: 1.5rem;
     padding-bottom: 2rem;
     padding-top: 2rem;
 }
 h2{
     padding: 2rem 1.5rem 0 1.5rem;
+}
+.ms-btn-secondary{
+    background-color: var(--secondary);
+    color: var(--primary);
+    width: 180px; 
+    margin-top: 1rem; 
+    padding: 0.7rem 0;
 }
 // /COMMON
 
@@ -241,7 +249,23 @@ h2{
 }
 //PRODOCTS
 
-
+// CREATE-EDIT PROD
+.ms-form-container{
+    height: 100vh;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    h2{
+        font-weight: 800;
+        padding-bottom: 2rem;
+        color: var(--primary);
+    }
+    label{
+        color: var(--secondary);
+    }
+}
+// /CREATE-EDIT PROD
 
 
 
@@ -276,6 +300,12 @@ h2{
                 margin-bottom: 1rem;
             }
         }   
+    }
+}
+@media screen and (min-width: 992px){
+    .ms-form-container{
+        width: 60%;
+        margin: 0 auto;
     }
 }
 

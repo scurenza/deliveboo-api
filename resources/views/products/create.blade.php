@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container w-50">
-        <div class="text-center">Crea un nuovo prodotto</div>
+    <div class="ms-form-container">
+        <h2 class="text-center">Crea un nuovo prodotto</h2>
         <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
@@ -29,7 +29,9 @@
             <div class="mb-3">
                 <span class="text-decoration-underline">I campi con * sono obbligatori</span>
             </div>
-            <button type="submit" class="btn btn-primary">Salva</button>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn ms-btn-secondary">Salva</button>
+            </div>
         </form>
     </div>
 @endsection

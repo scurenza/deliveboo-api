@@ -34,6 +34,7 @@ btnDeletes.forEach((btn) =>
         document.getElementById('delete-modal-btn').addEventListener('click', () => {
             btn.parentElement.submit();
         })
+        console.log('Click');
     })
 );
 

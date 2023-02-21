@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container w-50">
-        <div class="text-center">Modifica un prodotto</div>
+    <div class="ms-form-container">
+        <h2 class="text-center">Modifica un prodotto</h2>
         <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -25,8 +25,7 @@
                 <input type="file" name="img" class="form-control" id="img" aria-describedby="img">
                 @if ($product->img)
                     <div>
-                        <p class="mt-2 mb-0">Image preview:</p>
-                        <div class="img-wrapper d-flex justify-content-center">
+                        <div class="img-wrapper d-flex justify-content-center mt-2">
                             <img id="img-preview" src="{{ asset('storage/' . $product->img) }}" alt=""
                                 style="max-width: 200px;">
                         </div>
@@ -41,7 +40,9 @@
             <div class="mb-3">
                 <span class="text-decoration-underline">I campi con * sono obbligatori</span>
             </div>
-            <button type="submit" class="btn btn-primary">Salva Modifiche</button>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn ms-btn-secondary">Salva Modifiche</button>
+            </div>
         </form>
     </div>
 @endsection
