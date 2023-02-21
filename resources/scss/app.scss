@@ -22,13 +22,16 @@ body{
     color: var(--secondary);
     font-weight: 800;
     font-size: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
 }
 .ms_logo{
     color: var(--primary);
     text-align: center;
     padding-bottom: 2rem;
     padding-top: 2rem;
+}
+h2{
+    padding: 2rem 1.5rem 0 1.5rem;
 }
 // /COMMON
 
@@ -65,7 +68,7 @@ body{
 
 // CARDS
 .ms_cards-wrapper{
-    padding: 2rem 4rem;
+    padding: 2rem 1.5rem;
 }
 .ms_card {
     margin-bottom: 1rem;
@@ -78,7 +81,7 @@ body{
   .ms_card-image {
     background-color: rgb(236, 236, 236);
     width: 100%;
-    height: 60%;
+    height: 70%;
     border-radius: 6px 6px 0 0;
     &:hover{
         transform: scale(0.98);
@@ -111,6 +114,7 @@ body{
 // SIDEBAR
 #sidebarMenu{
     background-color: var(--secondary);
+    
     .sidebar-name{
         color: white;
         font-size: 1.4rem;
@@ -236,3 +240,70 @@ body{
     }
 }
 //PRODOCTS
+
+
+
+
+
+
+
+
+
+
+//MEDIA
+@media screen and (max-width: 580px){
+    .side-to-hide{
+        display: none;
+    }
+    .side-test{
+        display: flex;
+        justify-content: center;
+        margin: .5rem 0;
+        padding: 1rem 1.5rem 1rem 1.5rem;
+    }
+    .ms_logout{
+        .side-test-absolute{
+            padding-left: 30px;
+        }
+    }
+}
+@media screen and (max-width: 992px){
+    .banner-home{
+        padding: 2rem 1.5rem;
+        #banner-container{
+            flex-direction: column;
+            .banner-img-wrapper{
+                margin-bottom: 1rem;
+            }
+        }   
+    }
+}
+
+// .banner-home{
+//     background-color: var(--primary);
+//     padding: 2rem 4rem;
+//     .d-flex{
+//     .banner-img-wrapper{
+//         max-width: 350px;
+//         img{
+//             width: 100%;
+//             border-radius: 30px;
+//         }
+//     }
+//     ul{
+//         border-radius: 20px;
+//         li{
+//             padding: 0.75rem 1rem;
+//             span{
+
+//                 &:first-child{
+//                     margin-right: 2rem;
+//                 }
+//                 &:nth-child(2){
+//                     color: #FCA311;
+//                 }
+//             }
+//         }
+//     }
+// }   
+// }

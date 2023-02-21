@@ -11,6 +11,7 @@
     // dd($productsAviable)
 @endphp
 @extends('layouts.app')
+@section('title', 'Deliveboo')
 @section('content')
 
     {{-- view utente registrato --}}
@@ -23,7 +24,7 @@
                     I tuoi dati personali
                 </h2>
 
-                <div class="d-flex justify-content-around align-items-center">
+                <div id="banner-container" class="d-flex justify-content-around align-items-center">
                     {{-- img --}}
                     <div class="banner-img-wrapper">
                         @if (Auth::user()->img)
@@ -72,16 +73,32 @@
             {{-- /banner-home --}}
 
             {{-- prodotti disponibili --}}
-            <h2 class="text-center title-sections pt-5 pb-3">I tuoi piatti visibili ai clienti</h2>
-            <div class="container ms_cards-wrapper">
+            <h2 class="text-center title-sections">I tuoi piatti visibili ai clienti</h2>
+            <div class="ms_cards-wrapper">
                 @if (count($productsAvailable) > 0)
-                    <div class="row row-cols-md-3">
+                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
                         @foreach ($productsAvailable as $product)
                             <div class="col">
                                 {{-- card --}}
                                 <div class="ms_card">
-                                    <div class="ms_card-image"> <img src="{{ asset('storage/' . $product->img) }}"
-                                            alt=""></div>
+                                    <div class="ms_card-image">
+                                        @if ($product->img)
+                                            <img src="{{ asset('storage/' . $product->img) }}"alt="">
+                                        @else
+                                            <img src="http://img.kpopmap.com/wp-content/uploads_kpopmap/2016/11/kpop-idols-beret-hats-2016-exo-do.jpg"
+                                                alt="">
+                                        @endif
+                                    </div>
+                                    {{-- 
+                                                @if ($product->img)
+                                                    <img src="{{ asset('storage/' . $product->img) }}"
+                                                        alt="{{ $product->img ? 'immagine di ' . $product->img : 'Immagine non disponibile' }}">
+                                                @else
+                                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/005/725/214/small/concept-of-ban-burger-with-stop-sign-outline-icon-unhealthy-forbidden-food-line-icon-prohibition-of-eating-here-linear-pictogram-dont-allow-food-isolated-illustration-vector.jpg"
+                                                        alt="">
+                                                    <span></span>
+                                                @endif
+                                                --}}
                                     <div class="ms_price"> {{ $product->price }} € </div>
                                     <div class="ms_heading"> {{ $product->name }}
                                     </div>

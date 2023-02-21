@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'I tuoi prodotti')
 
 @section('content')
     <div class="container p-4 overflow-scroll" style="height: 100vh">
@@ -49,7 +50,7 @@
                                 <img src="{{ asset('storage/' . $product->img) }}"
                                     alt="{{ $product->img ? 'immagine di ' . $product->img : 'Immagine non disponibile' }}">
                             @else
-                                <img src="https://static.vecteezy.com/system/resources/thumbnails/005/725/214/small/concept-of-ban-burger-with-stop-sign-outline-icon-unhealthy-forbidden-food-line-icon-prohibition-of-eating-here-linear-pictogram-dont-allow-food-isolated-illustration-vector.jpg"
+                                <img src="http://img.kpopmap.com/wp-content/uploads_kpopmap/2016/11/kpop-idols-beret-hats-2016-exo-do.jpg"
                                     alt="">
                                 <span></span>
                             @endif

@@ -1,42 +1,14 @@
 @extends('layouts.app')
+@section('title', 'I tuoi ordini')
 
 @section('content')
-    <div class="container">
-        {{-- @if (session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif --}}
-        {{-- Modal --}}
-        {{-- <div class="modal" tabindex="-1" role="dialog" id="deleteModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Sei sicuro?</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p id="deleteModalText"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="delete-modal-btn">Cancella</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        <div>
-
-        </div>
-
-
+    <div class="container overflow-scroll" style="height: 100vh">
         <div class="row row-cols-md-3">
             @foreach ($orders as $order)
                 <div class="col">
-                    <div class="card d-flex flex-column justify-content-center" style="width: 18rem; height:100%">
 
+
+                    <div class="card d-flex flex-column justify-content-center" style="width: 18rem; height:100%">
                         <div class="card-body">
                             <h5 class="card-title text-center">Ordinante: {{ $order->name }} {{ $order->last_name }}</h5>
 
