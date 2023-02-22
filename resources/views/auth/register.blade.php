@@ -142,12 +142,13 @@
                                 </div>
                             </div>
 
+                            <span>Seleziona una o più tipologie*</span>
                             {{-- types --}}
-                            <div class="mb-4 row d-flex">
-                                <span class="col-md-4 col-form-label text-md-right">Seleziona una o più tipologie*</span>
-                                <div class="form-check @error('types') is-invalid @enderror">
+                            <div class="my-3 container">
+                                <div
+                                    class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 @error('types') is-invalid @enderror">
                                     @foreach ($types as $type)
-                                        <div>
+                                        <div class="col mb-1">
                                             <input class="form-check-input" name="types[]" type="checkbox"
                                                 value="{{ $type->id }}" @checked($errors->any() ? in_array($type->id, old('types', [])) : false)
                                                 id="type-{{ $type->id }}">

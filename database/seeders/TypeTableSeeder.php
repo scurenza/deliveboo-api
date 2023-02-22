@@ -15,7 +15,7 @@ class TypeTableSeeder extends Seeder
      */
     public function run()
     {
-        $types = ['Italiano', 'Messicano', 'Thai', 'Giapponese'];
+        $types = ['Italiano', 'Messicano', 'Thai', 'Giapponese', 'Vegetariano', 'Fast Food', 'Pizza', 'Panino', 'Halal', 'Greco', 'Colazione', 'Dolce'];
         foreach ($types as $type) {
             $newType = new Type();
             $newType->name = $type;
